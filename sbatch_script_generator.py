@@ -4,7 +4,7 @@ import os
 home = os.getenv("HOME")
 file_name = 'final_MSFT'
 file_path = "data/%s.csv" % file_name
-regenerated_size = 10
+regenerated_size = 5000
 z_vector_dimensions = [10, 11, 12, 13, 14, 15, 16, 17]
 taus = [5, 6, 7, 8, 9, 10]
 
@@ -27,4 +27,4 @@ for z_vector_dim in z_vector_dimensions:
             fh.writelines("#SBATCH --error=%s/constrained_rw/.out/%s.err\n" % (home, job_name))
             fh.writelines("python $HOME/constrained_rw/constrained_rw.py %s %s %s %s %s\n" % (file_path, z_vector_dim, tau, regenerated_size, output_file))
 
-        #os.system("sbatch %s" % job_file)
+        os.system("sbatch %s" % job_file)

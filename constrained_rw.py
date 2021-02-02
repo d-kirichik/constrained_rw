@@ -19,7 +19,7 @@ detrended = np.full(ts.shape[0], 0, dtype=np.float)
 for i in range(1, len(ts)):
       detrended[i] = ts[i] - ts[i-1]
 
-crw = ConstrainedRandomWalk(ts[0:1000], int(z_vector_size), int(tau))
+crw = ConstrainedRandomWalk(ts, int(z_vector_size), int(tau))
 xs = crw.regenerate_time_series(int(regenerated_size))
 
 np.savetxt(output_file, xs)
